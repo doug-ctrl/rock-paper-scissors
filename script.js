@@ -45,25 +45,21 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// show instructions then run a single prompt-based round
-showinstruction()
+function getPlayerChoice() {
+  while (true) {
+    const rawInput = prompt('Enter your choice (rock, paper, or scissors):')
 
-const computerSelection = computerPlay()
-console.log('Computer chose:', computerSelection)
-const rawInput = prompt('Enter your choice (rock, paper, or scissors):')
-  ?.trim()
-  .toLowerCase()
+    if (rawInput === null) {
+      return null
+    }
 
-if (rawInput === null) {
-  alert('You quit the game. Thanks for playing!')
-} else {
-  const playerSelection = rawInput.trim().toLowerCase()
+    const playerSelection = rawInput.trim().toLowerCase()
 
-  if (!CHOICES.includes(playerSelection)) {
+    if (CHOICES.includes(playerSelection)) {
+      return playerSelection
+    }
+
     alert('Invalid choice. Please enter rock, paper, or scissors.')
-  } else {
-    const result = playRound(playerSelection, computerSelection)
-    console.log(result.message)
   }
 }
 
@@ -89,6 +85,14 @@ function game() {
   while (playerScore < WINNING_SCORE && computerScore < WINNING_SCORE) {
     roundNumber++
 
+    const playerSelection = getPlayerChoice()
+
+    if (playerSelection === null) {
+      alert('You quit the game. Thanks for playing!')
+      return
+    }
+
+    const computerSelection = computerPlay()
     const roundOutcome = playRound(playerSelection, computerSelection)
 
     logRound(roundNumber, playerSelection, computerSelection, roundOutcome)
@@ -102,23 +106,25 @@ function game() {
 
     console.log(`Score — You: ${playerScore} | Computer: ${computerScore}\n`)
   }
+
   if (playerScore > computerScore) {
     console.log(
-      ` You win the match ${playerScore}-${computerScore}! ` +
+      `You win the match ${playerScore}-${computerScore}! ` +
         'The challenger bows out in defeat.',
     )
     alert(
-      ` You won the match ${playerScore}-${computerScore}! Check the console for the full battle log.`,
+      `You won the match ${playerScore}-${computerScore}! Check the console for the full battle log.`,
     )
   } else {
     console.log(
-      ` The computer wins the match ${computerScore}-${playerScore}. ` +
+      `The computer wins the match ${computerScore}-${playerScore}. ` +
         'Better luck next time, challenger.',
     )
     alert(
-      ` The computer won the match ${computerScore}-${playerScore}. Refresh the page for a rematch!`,
+      `The computer won the match ${computerScore}-${playerScore}. Refresh the page for a rematch!`,
     )
   }
 }
 
+showinstruction()
 game()
