@@ -3,7 +3,6 @@
 ============================================================ */
 
 const WINNING_SCORE = 3;
-const validChoices = ['rock', 'paper', 'scissors'];
 const CHOICES = ['rock', 'paper', 'scissors'];
 
 function showinstruction() {
@@ -47,7 +46,7 @@ if (rawInput === null) {
 } else {
   const playerSelection = rawInput.trim().toLowerCase();
 
-  if (!validChoices.includes(playerSelection)) {
+  if (!CHOICES.includes(playerSelection)) {
     alert("Invalid choice. Please enter rock, paper, or scissors.");
   } else {
     const result = playRound(playerSelection, computerSelection);
