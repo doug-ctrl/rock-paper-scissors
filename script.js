@@ -66,16 +66,3 @@ if (rawInput === null) {
     console.log(result.message)
   }
 }
-
-/**
- * Logs one round's details to the console in a friendly, readable way.
- */
-function logRound(roundNumber, playerChoice, computerChoice, roundOutcome) {
-  console.log(`— Round ${roundNumber} —`)
-  console.log(`You picked:      ${playerChoice}`)
-  console.log(`Computer picked: ${computerChoice}`)
-  console.log(roundOutcome.message)
-}
-
-/* Runs the full match: keeps asking for rounds until someone reaches
- * WINNING_SCORE wins, tracking score along the way and announcing a final <winner></winner>
