@@ -16,16 +16,41 @@ function computerPlay() {
   return CHOICES[index];
 }
 
+// plays a single round and returns the result
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return { outcome: 'draw', message: `Draw! We both picked ${playerSelection}.` };
+  }
+
+  const playerWinsAgainst = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper'
+  };
+
+  if (playerWinsAgainst[playerSelection] === computerSelection) {
+    return { outcome: 'player', message: `You win! ${playerSelection} beats ${computerSelection}.` };
+  }
+
+  return { outcome: 'computer', message: `AI wins! ${computerSelection} beats ${playerSelection}.` };
+}
+
 // show instructions then run a single prompt-based round
 showinstruction();
 
 const computerSelection = computerPlay();
 console.log('Computer chose:', computerSelection);
-const playerSelection = prompt("Enter your choice (rock, paper, or scissors):")?.trim().toLowerCase();
+const rawInput = prompt("Enter your choice (rock, paper, or scissors):")?.trim().toLowerCase();
 
-if (!validChoices.includes(playerSelection)) {
-    alert("Invalid choice. Please enter rock, paper, or scissors.");
+if (rawInput === null) {
+  alert("You quit the game. Thanks for playing!");
 } else {
-    // Valid selection — original branch showed instructions after validation; kept flow but instructions already shown above
-}
+  const playerSelection = rawInput.trim().toLowerCase();
 
+  if (!validChoices.includes(playerSelection)) {
+    alert("Invalid choice. Please enter rock, paper, or scissors.");
+  } else {
+    const result = playRound(playerSelection, computerSelection);
+    console.log(result.message);
+  }
+}
