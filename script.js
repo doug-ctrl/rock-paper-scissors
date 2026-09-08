@@ -7,7 +7,16 @@ const CHOICES = ['rock', 'paper', 'scissors']
 
 function showinstruction() {
   alert(
-    'Welcome to Rock, Paper, Scissors!\n\nInstructions:\n- Choose rock, paper, or scissors.\n- The computer will also make a choice.\n- Rock beats scissors, scissors beats paper, and paper beats rock.\n- First to reach 3 wins is the overall winner. Good luck!',
+    'Welcome to Rock, Paper, Scissors!\n\n' +
+    'Instructions:\n' +
+    '- Choose rock, paper, or scissors.\n' +
+    '- The computer will also make a choice.\n' +
+    '- Rock beats scissors, scissors beats paper, and paper beats rock.\n' +
+    '- First to reach 3 wins is the overall winner.\n\n' +
+    'Important: This game uses your browser console to show round-by-round ' +
+    'results and the running score, so keep it open while you play.\n' +
+    'To open it: right-click the page → Inspect → Console tab (or press F12).\n\n' +
+    'Good luck!'
   )
 }
 
