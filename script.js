@@ -57,8 +57,10 @@ function playRound(playerSelection, computerSelection) {
 
 function getPlayerChoice() {
   while (true) {
-    const rawInput = prompt('Enter your choice (rock, paper, or scissors):')
-
+    const rawInput = prompt(
+      'Enter your choice (rock, paper, scissors, cancel to quit):',
+    )
+    // prompt() returns null only when the user presses Cancel/Esc
     if (rawInput === null) {
       return null
     }
