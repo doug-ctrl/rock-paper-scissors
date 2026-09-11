@@ -28,11 +28,11 @@ function computerPlay() {
 }
 
 // plays a single round and returns the result
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
+function playRound(playerChoice, ComputerChoice) {
+  if (playerChoice === ComputerChoice) {
     return {
       outcome: 'draw',
-      message: `Draw! We both picked ${playerSelection}.`,
+      message: `Draw! We both picked ${playerChoice}.`,
     }
   }
 
@@ -42,16 +42,16 @@ function playRound(playerSelection, computerSelection) {
     scissors: 'paper',
   }
 
-  if (playerWinsAgainst[playerSelection] === computerSelection) {
+  if (playerWinsAgainst[playerChoice] === ComputerChoice) {
     return {
       outcome: 'player',
-      message: `You win! ${playerSelection} beats ${computerSelection}.`,
+      message: `You win! ${playerChoice} beats ${ComputerChoice}.`,
     }
   }
 
   return {
     outcome: 'computer',
-    message: `The computer wins this round! ${computerSelection} beats ${playerSelection}.`,
+    message: `The computer wins this round! ${ComputerChoice} beats ${playerChoice}.`,
   }
 }
 
@@ -65,10 +65,10 @@ function getPlayerChoice() {
       return null
     }
 
-    const playerSelection = rawInput.trim().toLowerCase()
+    const playerChoice = rawInput.trim().toLowerCase()
 
-    if (CHOICES.includes(playerSelection)) {
-      return playerSelection
+    if (CHOICES.includes(playerChoice)) {
+      return playerChoice
     }
 
     alert('Invalid choice. Please enter rock, paper, or scissors.')
@@ -97,17 +97,17 @@ function game() {
   while (playerScore < WINNING_SCORE && computerScore < WINNING_SCORE) {
     roundNumber++
 
-    const playerSelection = getPlayerChoice()
+    const playerChoice = getPlayerChoice()
 
-    if (playerSelection === null) {
+    if (playerChoice === null) {
       alert('You quit the game. Thanks for playing!')
       return
     }
 
-    const computerSelection = computerPlay()
-    const roundOutcome = playRound(playerSelection, computerSelection)
+    const ComputerChoice = computerPlay()
+    const roundOutcome = playRound(playerChoice, ComputerChoice)
 
-    logRound(roundNumber, playerSelection, computerSelection, roundOutcome)
+    logRound(roundNumber, playerChoice, ComputerChoice, roundOutcome)
 
     if (roundOutcome.outcome === 'player') {
       playerScore++
