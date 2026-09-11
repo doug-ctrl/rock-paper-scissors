@@ -85,7 +85,7 @@ function logRound(roundNumber, playerChoice, computerChoice, roundOutcome) {
   console.log(roundOutcome.message)
 }
 
-function game() {
+async function game() {
   console.log(
     `First to ${WINNING_SCORE} round wins takes the match. Draws score nothing. Here we go!\n`,
   )
@@ -117,6 +117,11 @@ function game() {
     // draws: no score change
 
     console.log(`Score — You: ${playerScore} | Computer: ${computerScore}\n`)
+
+    // Hand control back to the browser for a moment so it can repaint
+    // the console with this round's output before the next prompt()
+    // blocks the thread again.
+    await new Promise((resolve) => setTimeout(resolve, 0))
   }
 
   if (playerScore > computerScore) {
