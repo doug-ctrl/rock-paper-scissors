@@ -14,8 +14,8 @@ function showinstruction() {
       '- The computer will also make a choice.\n' +
       '- Rock beats scissors, scissors beats paper, and paper beats rock.\n' +
       '- First to reach 3 wins is the overall winner.\n\n' +
-      'Important: This game has no visible page content, just uses your browser console to show round-by-round ' +
-      'results and the running score, so keep it open while you play.\n' +
+      'After each entry, a pop-up shows the round result and running score. The console also contains the full ' +
+        'round-by-round log.\n' +
       'To open it: right-click the page → Inspect → Console tab (or press F12).\n\n' +
       'Good luck!',
   )
@@ -118,9 +118,9 @@ function game() {
 
     console.log(`Score — You: ${playerScore} | Computer: ${computerScore}\n`)
 
-    // Hand control back to the browser for a moment so it can repaint
-    // the console with this round's output before the next prompt()
-    // blocks the thread again.
+    alert(
+      `${roundOutcome.message}\n\nScore — You: ${playerScore} | Computer: ${computerScore}`,
+    )
   }
 
   if (playerScore > computerScore) {
