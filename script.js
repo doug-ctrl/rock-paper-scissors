@@ -15,7 +15,7 @@ function showinstruction() {
       '- Rock beats scissors, scissors beats paper, and paper beats rock.\n' +
       '- First to reach 3 wins is the overall winner.\n\n' +
       'After each entry, a pop-up shows the round result and running score. The console also contains the full ' +
-        'round-by-round log.\n' +
+      'round-by-round log.\n' +
       'To open it: right-click the page → Inspect → Console tab (or press F12).\n\n' +
       'Good luck!',
   )
