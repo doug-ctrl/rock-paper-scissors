@@ -21,13 +21,11 @@ function showinstruction() {
   )
 }
 
-// returns a random choice for the computer: 'rock', 'paper' or 'scissors'
 function computerPlay() {
   const index = Math.floor(Math.random() * CHOICES.length)
   return CHOICES[index]
 }
 
-// plays a single round and returns the result
 function playRound(playerChoice, ComputerChoice) {
   if (playerChoice === ComputerChoice) {
     return {
@@ -75,9 +73,6 @@ function getPlayerChoice() {
   }
 }
 
-/**
- * Logs one round's details to the console in a friendly, readable way.
- */
 function logRound(roundNumber, playerChoice, computerChoice, roundOutcome) {
   console.log(`— Round ${roundNumber} —`)
   console.log(`You picked:      ${playerChoice}`)
